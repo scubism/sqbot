@@ -25,7 +25,8 @@ module.exports = (robot) ->
     'ｱｱ…ｴｯﾄ…ｵﾅｼｬｽ…',
     '(☝ ՞ਊ ՞)☝',
     '(◞≼●≽◟◞౪◟◞≼●≽◟)',
-  ]
+    'ﾜﾝ',
+]
 
   robot.hear /(こと.+です[！!。])|(よろしくお(ねが|願)いします)|((こんに?)?ちわ(っす)?)/i, (msg) ->
     idx = parseInt Math.random() * greets.length, 10
