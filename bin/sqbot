@@ -1,5 +1,20 @@
-#!/bin/sh
+#!/usr/bin/env sh
 
-npm install
-source ./sqbotenv
-exec hubot -a yammer -n sqbot
+BIN_DIR=`readlink -f $(dirname $0)`
+PROJECT_ROOT=`dirname $BIN_DIR`
+
+source $PROJECT_ROOT/sqbotenv
+
+case $1 in
+    "start" | "stop" | "restart" )
+       ./node_modules/forever/bin/forever $1 \
+           -p $PROJECT_ROOT \
+           -l log/sqbot.log \
+           -a \
+           --pidFile $PROJECT_ROOT/tmp/pids/sqbot.pid \
+           -c coffee \
+           $PROJECT_ROOT/node_modules/hubot/bin/hubot \
+           "-a yammer -n sqbot"
+    ;;
+    * ) echo "usage: sqbot start|stop|retart" ;;
+esac
