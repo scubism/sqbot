@@ -14,7 +14,7 @@ case $1 in
            --pidFile $PROJECT_ROOT/tmp/pids/sqbot.pid \
            -c coffee \
            $PROJECT_ROOT/node_modules/hubot/bin/hubot \
-           "-a yammer -n sqbot"
+           --adapter yammer --name sqbot
     ;;
     * ) echo "usage: sqbot start|stop|retart" ;;
 esac
